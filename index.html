@@ -320,6 +320,7 @@
           currentArray.push(valueToAdd)
         }
       }
+      var dateSelector = $('#date-picker').MPDatepicker();    // Create a date picker
       dateSelector.on('change', function(e, dates) {                          // Do something when the dates are changed
           $("#loading-container").show()
           $('#tables-and-charts').hide()
@@ -341,7 +342,7 @@
       function exportAllData() {
         $("#full-table_wrapper .dt-buttons .buttons-csv").click()
       }
-      var dateSelector = $('#date-picker').MPDatepicker();    // Create a date picker
+
     </script>
     <script type="text/javascript"> // mixpanel tracking
       //info for tracking
