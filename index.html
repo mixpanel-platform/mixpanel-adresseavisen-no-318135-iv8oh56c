@@ -118,38 +118,6 @@
         </div>
       </div>
     </div>
-    <!-- graph events table -->
-    <script type="text/javascript" src="js/table.js"></script>
-    <script type="text/javascript">
-    var params ={}
-    runQuery()
-    function exportAllData() {
-      $("#full-table_wrapper .dt-buttons .buttons-csv").click()
-    }
-    var dateSelector = $('#date-picker').MPDatepicker();    // Create a date picker
-    </script>
-    <script type="text/javascript"> // mixpanel tracking
-    //info for tracking
-      var url = window.document.referrer.split('/mpplatform')[0]
-      var id = url.split('report/')[1]
-      var reportLoaded = {
-        'event': 'Report Loaded',
-        'properties': {
-          'token': 'ca9cd5c31c3325af1f911aaaf633ca44',
-          'Report': 'Spec Sheet',
-          'client': 'Polaris Media',
-          'distinct_id': id,
-          'Project id': id,
-          'Local Hour': new Date().getHours(),
-          'Day of the week': new Date().getDay()
-        }
-      }
-      var stringVersion = JSON.stringify(reportLoaded)
-      var encoded = window.btoa(stringVersion)
-      $.ajax({
-        url: "https://api.mixpanel.com/track/?data="+encoded
-      })
-    </script>
     <!-- run spec query -->
     <script type="text/javascript">
       function runQuery(){
@@ -366,6 +334,36 @@
           $('#full-table-header-row').append('<th>'+array[i]+'</t>')
         }
       }
+    </script>
+    <script type="text/javascript">
+      var params ={}
+      runQuery()
+      function exportAllData() {
+        $("#full-table_wrapper .dt-buttons .buttons-csv").click()
+      }
+      var dateSelector = $('#date-picker').MPDatepicker();    // Create a date picker
+    </script>
+    <script type="text/javascript"> // mixpanel tracking
+      //info for tracking
+      var url = window.document.referrer.split('/mpplatform')[0]
+      var id = url.split('report/')[1]
+      var reportLoaded = {
+        'event': 'Report Loaded',
+        'properties': {
+          'token': 'ca9cd5c31c3325af1f911aaaf633ca44',
+          'Report': 'Spec Sheet',
+          'client': 'Polaris Media',
+          'distinct_id': id,
+          'Project id': id,
+          'Local Hour': new Date().getHours(),
+          'Day of the week': new Date().getDay()
+        }
+      }
+      var stringVersion = JSON.stringify(reportLoaded)
+      var encoded = window.btoa(stringVersion)
+      $.ajax({
+        url: "https://api.mixpanel.com/track/?data="+encoded
+      })
     </script>
   </body>
 </html>
